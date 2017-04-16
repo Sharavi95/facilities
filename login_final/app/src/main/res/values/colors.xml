@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="bg_login">#26ae90</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#428bca</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+
+    <color name="btn">#ea4c88</color>
+
+    <color name="btn_tennis">#026eb1</color>
+    <color name="bg_tennis">#b4e1fe</color>
+    <color name="bg_tennisTextField">#e6f5ff</color>
+
+    <color name="btn_group_class">#cc0066</color>
+    <color name="bg_group_class">#ff80bf</color>
+    <color name="bg_group_classTextField">#ffe6f2</color>
+
+    <color name="btn_logut_bg">#ff6861</color>
+</resources>

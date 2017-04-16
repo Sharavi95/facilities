@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <!--  <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="14dp"
+
+        android:id="@+id/gameImage"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" /> -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Devil May Cry"
+        android:textSize="18sp"
+        android:id="@+id/dateView"
+        android:paddingLeft="4dp"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:lines="1"
+        android:ellipsize="end"
+        android:paddingLeft="4dp"
+        android:paddingRight="5dp"
+        android:textSize="12sp"
+        android:id="@+id/session1View"
+        android:layout_below="@+id/dateView"
+        android:layout_alignLeft="@+id/dateView"
+        android:layout_alignStart="@+id/dateView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+        android:text="Plateform : PS3, XBOX 360"
+        android:id="@+id/session2View"
+        android:paddingLeft="4dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="12sp"
+        android:layout_below="@+id/session1View"
+        android:layout_alignLeft="@+id/session1View"
+        android:layout_alignStart="@+id/session1View" />
+
+</RelativeLayout>
