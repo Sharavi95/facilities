@@ -1,1 +1,8 @@
+FOLDER NAME ON SERVER: android_login_api
+Database
+Host:localhost
+User: projects_appusr9
+Database: projects_app1 
+Password: kagoMO0@(~[&
+
 as of 16/4/17 3:48 p.m.
