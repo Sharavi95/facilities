@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -147,7 +149,8 @@ public class BookGroupClass2Activity extends AppCompatActivity {
 
     private void displaySch(){
         // Create an ArrayList of Schedule objects
-        ArrayList<Schedule> schedule = new ArrayList<Schedule>();
+        final ArrayList<Schedule> schedule = new ArrayList<Schedule>();
+
         if(!session1.equals("null")){
             schedule.add(new Schedule(session1, "5:00-6:00"));
         }
@@ -161,6 +164,16 @@ public class BookGroupClass2Activity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listview_sch);
         listView.setAdapter(scheduleAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // When clicked, show a toast with the TextView text
+
+                Schedule schedule1 = schedule.get(position);
+
+                Toast.makeText(BookGroupClass2Activity.this, "Session" + schedule1.getSessionName(),
+                    Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
