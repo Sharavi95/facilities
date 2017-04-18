@@ -16,12 +16,13 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Map;
 
 import info.androidhive.loginandregistration.R;
 import info.androidhive.loginandregistration.app.AppConfig;
 import info.androidhive.loginandregistration.app.AppController;
-import info.androidhive.loginandregistration.helper.SQLiteHandler;
 import info.androidhive.loginandregistration.helper.SessionManager;
 
 import static info.androidhive.loginandregistration.activity.BookGroupClassActivity.newDate;
@@ -31,30 +32,37 @@ public class BookGroupClass2Activity extends AppCompatActivity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private SessionManager session;
-    private SQLiteHandler db;
-    private String jsonResponse;
-	private String date;
     private Map<String, String> mParams;
-    private String URL;
-	
+
+    public static SimpleDateFormat dateFormatter2;
+    private String date;
+
+    private String URL, session1, session2;
+
+    private TextView txt1;
+    private TextView txt2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_group_class2);
+
+        txt1 = (TextView) findViewById(R.id.textView);
+        txt2 = (TextView) findViewById(R.id.textView2);
       
 		// Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-
         // Session manager
         session = new SessionManager(getApplicationContext());
 
-		date = BookGroupClassActivity.dateFormatter.format(newDate.getTime());
-        URL= AppConfig.URL_SCHEDULE + "?date=" + date;
+        //change date format from d-m-y to y-m-d and convert calendar obj newDate to String date
+        dateFormatter2 = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        date = dateFormatter2.format(newDate.getTime());
 
+        //create appended url with date selected
+        URL= AppConfig.URL_SCHEDULE + "?date=" + date;
 
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
@@ -79,15 +87,11 @@ public class BookGroupClass2Activity extends AppCompatActivity {
 						// Check for error node in json
 						if (!error) {
 												   
-							String session1 = jObj.getString("session1");
-							String session2 = jObj.getString("session2");
-							
-							//Display on screen
-                            TextView txt1 = (TextView) findViewById(R.id.textView);
-                            TextView txt2 = (TextView) findViewById(R.id.textView);
-                            txt1.setText(session1);
-                            txt2.setText(session2);
-							
+							session1 = jObj.getString("session1");
+							session2 = jObj.getString("session2");
+
+                            displaySch();
+
 						} else {
 							// Error in Getting Schedule. Get the error message
 							String errorMsg = jObj.getString("error_msg");
@@ -141,6 +145,10 @@ public class BookGroupClass2Activity extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    private void displaySch(){
+
     }
 
 }
