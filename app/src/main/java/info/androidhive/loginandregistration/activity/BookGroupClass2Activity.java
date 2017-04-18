@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 
@@ -24,6 +25,8 @@ import info.androidhive.loginandregistration.R;
 import info.androidhive.loginandregistration.app.AppConfig;
 import info.androidhive.loginandregistration.app.AppController;
 import info.androidhive.loginandregistration.helper.SessionManager;
+import info.androidhive.loginandregistration.sch.Schedule;
+import info.androidhive.loginandregistration.sch.ScheduleAdapter;
 
 import static info.androidhive.loginandregistration.activity.BookGroupClassActivity.newDate;
 
@@ -39,17 +42,12 @@ public class BookGroupClass2Activity extends AppCompatActivity {
 
     private String URL, session1, session2;
 
-    private TextView txt1;
-    private TextView txt2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_group_class2);
 
-        txt1 = (TextView) findViewById(R.id.textView);
-        txt2 = (TextView) findViewById(R.id.textView2);
-      
+
 		// Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -148,6 +146,21 @@ public class BookGroupClass2Activity extends AppCompatActivity {
     }
 
     private void displaySch(){
+        // Create an ArrayList of Schedule objects
+        ArrayList<Schedule> schedule = new ArrayList<Schedule>();
+        if(!session1.equals("null")){
+            schedule.add(new Schedule(session1, "5:00-6:00"));
+        }
+        if(!session2.equals("null")){
+            schedule.add(new Schedule(session2, "6:00-7:00"));
+        }
+
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, schedule);
+
+        // Get a reference to the ListView, and attach the adapter to the listView.
+        ListView listView = (ListView) findViewById(R.id.listview_sch);
+        listView.setAdapter(scheduleAdapter);
+
 
     }
 
